@@ -38,7 +38,7 @@ const Navbar = () => {
             className="cursor-pointer"
             src={Logo}
             alt="logo"
-            layout="responsive"
+            layout="fill"
           />
         </div>
       </Link>
