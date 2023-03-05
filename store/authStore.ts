@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
 
@@ -12,8 +12,7 @@ const authStore = (set: any) => ({
   removeUser: () => set({ userProfile: null }),
 
   fetchAllUsers: async () => {
-    const response = await axios.get(`${BASE_URL}/api/users`);
-
+    const response = await axios.get(`${BASE_URL}/api/user`);
     set({ allUsers: response.data });
   },
 });

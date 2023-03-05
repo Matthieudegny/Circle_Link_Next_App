@@ -43,11 +43,15 @@ const VideoCard: NextPage<IProps> = ({
     return (
       <div>
         <Link href={`/detail/${_id}`}>
-          <video
-            loop
-            src={video.asset.url}
-            className="w-[250px] md:w-full rounded-xl cursor-pointer"
-          ></video>
+          {video.asset ? (
+            <video
+              loop
+              src={video.asset.url}
+              className="w-[250px] md:w-full rounded-xl cursor-pointer"
+            ></video>
+          ) : (
+            ""
+          )}
         </Link>
         <div className="flex gap-2 -mt-8 items-center ml-4">
           <p className="text-white text-lg font-medium flex gap-1 items-center">
@@ -77,7 +81,6 @@ const VideoCard: NextPage<IProps> = ({
                   className=" rounded-full"
                   src={postedBy?.image}
                   alt="user-profile"
-                  layout="responsive"
                 />
               </>
             </Link>
@@ -108,12 +111,16 @@ const VideoCard: NextPage<IProps> = ({
           className="rounded-3xl"
         >
           <Link href={`/detail/${_id}`}>
-            <video
-              loop
-              ref={videoRef}
-              src={video.asset.url}
-              className="lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
-            ></video>
+            {video.asset !== null ? (
+              <video
+                loop
+                ref={videoRef}
+                src={video.asset.url}
+                className="w-[250px] md:w-full rounded-xl cursor-pointer"
+              ></video>
+            ) : (
+              ""
+            )}
           </Link>
 
           {isHover && (

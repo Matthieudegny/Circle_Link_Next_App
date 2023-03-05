@@ -31,12 +31,10 @@ const SuggestedAccounts: NextPage<IProps> = ({ fetchAllUsers, allUsers }) => {
             <div className="flex gap-3 hover:bg-primary p-2 cursor-pointer font-semibold rounded">
               <div className="w-8 h-8">
                 <Image
-                  width={34}
-                  height={34}
+                  style={{ width: "100%", height: "auto" }}
                   className="rounded-full"
                   src={user.image}
                   alt="user-profile"
-                  layout="responsive"
                 />
               </div>
 

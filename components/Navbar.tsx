@@ -16,6 +16,7 @@ const Navbar = () => {
   const [user, setUser] = useState<IUser | null>();
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
+  //state manager
   const { userProfile, addUser, removeUser } = useAuthStore();
 
   useEffect(() => {
@@ -35,10 +36,10 @@ const Navbar = () => {
       <Link href="/">
         <div className="w-[100px] md:w-[129px] md:h-[30px] h-[38px]">
           <Image
-            className="cursor-pointer"
+            className="cursor-pointer w-full h-auto"
             src={Logo}
             alt="logo"
-            layout="fill"
+            priority
           />
         </div>
       </Link>
@@ -78,8 +79,9 @@ const Navbar = () => {
                     className="rounded-full cursor-pointer"
                     src={user.image}
                     alt="user"
-                    width={40}
-                    height={40}
+                    width={50}
+                    height={50}
+                    style={{ width: "100%", height: "auto" }}
                   />
                 </div>
               </Link>
