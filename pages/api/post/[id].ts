@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { postDetailQuery } from "./../../../utils/queries";
 import { client } from "../../../utils/client";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from "uuid";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,7 +10,8 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     const { id } = req.query;
-    const query = postDetailQuery(id);
+    //It tells TypeScript that even though something looks like it could be null, it can trust you that it's not:
+    const query = postDetailQuery(id!);
 
     const data = await client.fetch(query);
 
@@ -26,7 +27,7 @@ export default async function handler(
       .insert("after", "comments[-1]", [
         {
           comment,
-          _key: uuid(),
+          _key: uuidv4(),
           postedBy: { _type: "postedBy", _ref: userId },
         },
       ])
