@@ -39,6 +39,7 @@ const Comments = ({
             <>
               {allUsers?.map(
                 (user: IUser) =>
+                  //if the user has published the comment
                   user._id === (item.postedBy._ref || item.postedBy._id) && (
                     <div className=" p-2 items-center" key={idx}>
                       <Link href={`/profile/${user._id}`}>
