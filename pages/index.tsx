@@ -26,7 +26,7 @@ const Home = ({ videos }: IProps) => {
 
 export default Home;
 
-//server side rendering function to pre render
+//server side rendering function to pre-render
 export const getServerSideProps = async ({
   query: { topic },
 }: {
