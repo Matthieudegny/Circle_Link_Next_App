@@ -25,6 +25,7 @@ const Profile = ({ data }: IProps) => {
   const videos = showUserVideos ? "border-b-2 border-black" : "text-gray-400";
   const liked = !showUserVideos ? "border-b-2 border-black" : "text-gray-400";
 
+  //showUserVideos -> videos or likes
   useEffect(() => {
     const fetchVideos = async () => {
       if (showUserVideos) {
@@ -62,12 +63,14 @@ const Profile = ({ data }: IProps) => {
       <div>
         <div className="flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 bg-white w-full">
           <p
+            // it's videos that mahe appear or desappear the videos
             className={`text-xl font-semibold cursor-pointer ${videos} mt-2`}
             onClick={() => setShowUserVideos(true)}
           >
             Videos
           </p>
           <p
+            // it's liked that mahe appear or desappear the likes
             className={`text-xl font-semibold cursor-pointer ${liked} mt-2`}
             onClick={() => setShowUserVideos(false)}
           >
@@ -90,11 +93,11 @@ const Profile = ({ data }: IProps) => {
   );
 };
 export const getServerSideProps = async ({
-  params: { userId },
+  params: { id },
 }: {
-  params: { userId: string };
+  params: { id: string };
 }) => {
-  const res = await axios.get(`${BASE_URL}/api/profile/${userId}`);
+  const res = await axios.get(`${BASE_URL}/api/profile/${id}`);
 
   return {
     props: { data: res.data },
