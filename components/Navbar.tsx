@@ -10,7 +10,8 @@ import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import useAuthStore from "../store/authStore";
 import { IUser } from "../types";
 import { createOrGetUser } from "../utils";
-import Logo from "../utils/tiktik-logo.png";
+import Logo from "../utils/Logo.png";
+import { TbBrandPlanetscale } from "react-icons/tb";
 
 const Navbar = () => {
   const [user, setUser] = useState<IUser | null>();
@@ -33,16 +34,18 @@ const Navbar = () => {
 
   return (
     <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
-      <Link href="/">
-        <div className="w-[100px] md:w-[129px] md:h-[30px] h-[38px]">
-          <Image
+      <div className="flex items-center w-[100px] md:w-[129px] md:h-[30px] h-[38px] ml-2">
+        {/* <Image
             className="cursor-pointer w-full h-auto"
             src={Logo}
             alt="logo"
             priority
-          />
-        </div>
-      </Link>
+            width={20}
+            height={20}
+          /> */}
+        <TbBrandPlanetscale className="text-xl" />
+        <h1 className="text-xl ml-3">Circle Link</h1>
+      </div>
 
       <div className="relative hidden md:block">
         <form
@@ -65,11 +68,11 @@ const Navbar = () => {
       </div>
       <div>
         {user ? (
-          <div className="flex gap-5 md:gap-10">
+          <div className="flex items-center gap-5 md:gap-10">
             <Link href="/upload">
-              <button className="border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2">
-                <IoMdAdd className="text-xl" />{" "}
-                <span className="hidden md:block">Upload </span>
+              <button className="border-4 px-2 md:px-4 rounded-md text-md font-semibold flex items-center gap-2">
+                <IoMdAdd className="text-xl" />
+                <span className=" md:block">Upload</span>
               </button>
             </Link>
             {user.image && (
@@ -79,8 +82,8 @@ const Navbar = () => {
                     className="rounded-full cursor-pointer"
                     src={user.image}
                     alt="user"
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     style={{ width: "100%", height: "auto" }}
                   />
                 </div>
