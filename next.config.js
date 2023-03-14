@@ -19,6 +19,11 @@ const nextConfig = {
         port: "",
         pathname: "/images/large-previews/31a/traverse-1234278.jpg",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+      },
     ],
   },
 };
